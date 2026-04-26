@@ -20,13 +20,32 @@ public class Main {
                 System.out.println("\t1. Display Products");
                 System.out.println("\t2. Display Cart");
                 System.out.println("\t3. Exit - close program");
-                System.out.print("Enter your option: ");
+                System.out.print("\nEnter your choice: ");
 
                 int userInput = scanner.nextInt();
 
+                scanner.nextLine();
+
                 switch(userInput){
                     case 1:
+                        System.out.println();
                         displayProducts(productList);
+
+                        System.out.print("\nEnter item by name or SKU: ");
+                        String item = scanner.nextLine();
+
+                        Product selectItem = findProduct(productList, item);
+
+                        //If item is not nothing, add item to cart
+                        if(selectItem != null){
+                            cart.addToCart(selectItem);
+                            System.out.println("Item has been added to cart.");
+                        }
+                        else{
+                            System.out.println("Product was not found.");
+                        }
+
+
                         break;
                     case 2:
                         displayCart(cart);
@@ -57,13 +76,27 @@ public class Main {
     //Not a list inside (). Do not have a list of carts. Just one cart that contains a list
     public static void displayCart(ShoppingCart cart){
         for(Product product : cart.getCart()){
-            System.out.println(product + "| $" + product.getPrice());
-            System.out.println("Total: $" + cart.getCartTotal());
+            System.out.println();
+            System.out.println(product + "| $");
         }
+        System.out.println("Total: $" + cart.getCartTotal());
     }
 
     //Search list
+    public static Product findProduct(List<Product> productList, String userInput){
+        for(Product product : productList){
 
-    //Add a product
+            //If the sku is the same as what the user typed in, return that product
+            if(product.getSku().equalsIgnoreCase(userInput)){
+                return product;
+            }
 
+            //If the name of product is the same as what the user typed in, return that product
+            if(product.getProductName().equalsIgnoreCase(userInput)){
+                return product;
+            }
+        }
+        //if nothing matches, return nothing
+        return null;
+    }
 }
