@@ -49,6 +49,7 @@ public class Main {
                         break;
                     case 2:
                         displayCart(cart);
+                        System.out.println();
 
                         System.out.println("\nWould you like to:");
                         System.out.println("\t1. Check out");
@@ -59,7 +60,7 @@ public class Main {
 
                         if(choice == 1){
                             //display the total amount and ask user to enter amount they will be paying
-                            System.out.printf("%.2f", cart.getCartTotal());
+                            System.out.printf("\nYour total: $%.2f%n", cart.getCartTotal());
                             System.out.print("\nEnter payment amount: $");
                             double payment = scanner.nextDouble();
                             double change = payment - cart.getCartTotal();
@@ -68,14 +69,14 @@ public class Main {
                                 System.out.println("Insufficient amount.");
                             }
                             else if(payment > cart.getCartTotal()){
-                                System.out.println("Your change is :$" + change);
+                                System.out.printf("\nYour change is: $%.2f%n", change);
                             }
 
-                                System.out.println("Receipt:");
+                                System.out.println("\n\t\tReceipt:");
                                 System.out.println("-----------------------------");
                                 System.out.printf("Cart total: $%.2f%n", cart.getCartTotal());
                                 System.out.println("Paid: $" + payment);
-                                System.out.printf("Your change: $%.2f%n" + change);
+                                System.out.printf("Your change: $%.2f%n", change);
                                 System.out.println("-----------------------------");
                                 System.out.println("Thank you for shopping at Michael's Online Store!");
 
@@ -109,7 +110,6 @@ public class Main {
             System.out.println();
             System.out.println(product);
         }
-        System.out.println("Total: $" + cart.getCartTotal());
     }
 
     //Search list
