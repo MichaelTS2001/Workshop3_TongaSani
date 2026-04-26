@@ -83,12 +83,16 @@ public class Main {
                                 cart.cart.clear(); // clear cart after user has checked out
                         }
                         else if (choice == 2) {
+
+                            scanner.nextLine();
+
                             System.out.print("\nPlease enter SKU / product name: ");
                             String remove = scanner.nextLine();
 
                             Product removeItem = findProduct(cart.getCart(), remove);
 
                             if(removeItem != null){
+                                cart.removeFromCart(removeItem);
                                 System.out.println("Item has been removed.");
                             }
                             else{
@@ -97,7 +101,7 @@ public class Main {
                         }
                         break;
                     case 3:
-                        System.out.println("Thank you for visiting our store!");
+                        System.out.println("\nThank you for visiting our store!");
                         System.exit(0);
                         break;
                     default:
