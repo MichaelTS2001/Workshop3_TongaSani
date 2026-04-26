@@ -22,6 +22,8 @@ public class FileManager {
 
             String input;
 
+            bufferedReader.readLine(); // This will skip the header in the product.csv
+
             while((input = bufferedReader.readLine()) != null){
                 String[] csvRow = input.split("\\|");
                 String sku = (csvRow[0]);

@@ -51,7 +51,11 @@ public class Product {
         this.department = department;
     }
 
-    public String toString(){
+
+    //Custom Methods
+
+
+    public String toString() {
         return String.format("%s | %s | $%.2f | %s ", sku, productName, price, department);
     }
 }
