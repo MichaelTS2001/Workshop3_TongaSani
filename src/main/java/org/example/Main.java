@@ -80,7 +80,20 @@ public class Main {
                                 System.out.println("-----------------------------");
                                 System.out.println("Thank you for shopping at Michael's Online Store!");
 
-                                System.exit(0);
+                                cart.cart.clear(); // clear cart after user has checked out
+                        }
+                        else if (choice == 2) {
+                            System.out.print("\nPlease enter SKU / product name: ");
+                            String remove = scanner.nextLine();
+
+                            Product removeItem = findProduct(cart.getCart(), remove);
+
+                            if(removeItem != null){
+                                System.out.println("Item has been removed.");
+                            }
+                            else{
+                                System.out.println("Product cannot be found in cart.");
+                            }
                         }
                         break;
                     case 3:
