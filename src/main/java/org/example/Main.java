@@ -107,7 +107,7 @@ public class Main {
     public static void displayCart(ShoppingCart cart){
         for(Product product : cart.getCart()){
             System.out.println();
-            System.out.println(product + "| $");
+            System.out.println(product);
         }
         System.out.println("Total: $" + cart.getCartTotal());
     }
