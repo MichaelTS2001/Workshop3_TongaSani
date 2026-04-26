@@ -15,7 +15,7 @@ public class Main {
 
         while(true){
 
-            try{
+            try{                    //display a menu for the user
                 System.out.println("\nPlease choose from one of the options below:");
                 System.out.println("\t1. Display Products");
                 System.out.println("\t2. Display Cart");
@@ -28,6 +28,7 @@ public class Main {
 
                 switch(userInput){
                     case 1:
+                        //display a list of the products
                         System.out.println();
                         displayProducts(productList);
 
@@ -51,6 +52,7 @@ public class Main {
                         displayCart(cart);
                         System.out.println();
 
+                        //Display a menu after they have seen the cart
                         System.out.println("\nWould you like to:");
                         System.out.println("\t1. Check out");
                         System.out.println("\t2. Remove Product");
@@ -65,13 +67,14 @@ public class Main {
                             double payment = scanner.nextDouble();
                             double change = payment - cart.getCartTotal();
 
+                            //validate the user's payment
                             if(payment < cart.getCartTotal()){
                                 System.out.println("Insufficient amount.");
                             }
                             else if(payment > cart.getCartTotal()){
                                 System.out.printf("\nYour change is: $%.2f%n", change);
                             }
-
+                                //Print the receipt
                                 System.out.println("\n\t\tReceipt:");
                                 System.out.println("-----------------------------");
                                 System.out.printf("Cart total: $%.2f%n", cart.getCartTotal());
@@ -82,29 +85,31 @@ public class Main {
 
                                 cart.cart.clear(); // clear cart after user has checked out
                         }
-                        else if (choice == 2) {
+                        else if (choice == 2) { //If the user would like to remove an item
 
                             scanner.nextLine();
 
                             System.out.print("\nPlease enter SKU / product name: ");
                             String remove = scanner.nextLine();
 
+                            //create a new object for the item being removed
                             Product removeItem = findProduct(cart.getCart(), remove);
 
+                            //If the item is not nothing, remove it
                             if(removeItem != null){
                                 cart.removeFromCart(removeItem);
                                 System.out.println("Item has been removed.");
-                            }
+                            }//if it is nothing, let the user know
                             else{
                                 System.out.println("Product cannot be found in cart.");
                             }
                         }
                         break;
-                    case 3:
+                    case 3: //If the user would like to exit the app
                         System.out.println("\nThank you for visiting our store!");
                         System.exit(0);
                         break;
-                    default:
+                    default: //If the user has put in a invalid input
                         System.out.println("Invalid input. Please try again.");
                         break;
                 }
