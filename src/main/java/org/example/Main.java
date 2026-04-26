@@ -49,6 +49,38 @@ public class Main {
                         break;
                     case 2:
                         displayCart(cart);
+
+                        System.out.println("\nWould you like to:");
+                        System.out.println("\t1. Check out");
+                        System.out.println("\t2. Remove Product");
+                        System.out.println("\t3. Go back");
+                        System.out.print("Select your choice: ");
+                        int choice = scanner.nextInt();
+
+                        if(choice == 1){
+                            //display the total amount and ask user to enter amount they will be paying
+                            System.out.printf("%.2f", cart.getCartTotal());
+                            System.out.print("\nEnter payment amount: $");
+                            double payment = scanner.nextDouble();
+                            double change = payment - cart.getCartTotal();
+
+                            if(payment < cart.getCartTotal()){
+                                System.out.println("Insufficient amount.");
+                            }
+                            else if(payment > cart.getCartTotal()){
+                                System.out.println("Your change is :$" + change);
+                            }
+
+                                System.out.println("Receipt:");
+                                System.out.println("-----------------------------");
+                                System.out.printf("Cart total: $%.2f%n", cart.getCartTotal());
+                                System.out.println("Paid: $" + payment);
+                                System.out.printf("Your change: $%.2f%n" + change);
+                                System.out.println("-----------------------------");
+                                System.out.println("Thank you for shopping at Michael's Online Store!");
+
+                                System.exit(0);
+                        }
                         break;
                     case 3:
                         System.out.println("Thank you for visiting our store!");
@@ -62,8 +94,6 @@ public class Main {
             catch(InputMismatchException ex){
                 System.out.println("Wrong input. Try again.");
             }
-
-
         }
     }
 
